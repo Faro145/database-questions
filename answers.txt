@@ -714,4 +714,6 @@ IS NOT NULL ORDER BY LifeExpectancy ASC LIMIT 1;
 Zambia - 37.2
 
 19.
-20.
+
+20. SELECT COUNT(Name) FROM country WHERE IndepYear IS NOT NULL;
+192
