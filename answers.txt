@@ -1,20 +1,717 @@
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18.
+1. SELECT COUNT(Name) FROM city WHERE CountryCode = 'USA'; 
+274
+
+2. SELECT Population, LifeExpectancy FROM country WHERE Name = 'Argentina'; 
+Population - 37032000, LifeExpectancy - 75.1
+
+3. SELECT Name, LifeExpectancy FROM country WHERE LifeExpectancy IS NOT NULL ORDER BY LifeExpectancy DESC LIMIT 1; 
+Andorra - 83.5
+
+4. SELECT country.Code, country.Capital, city.Name, city.CountryCode FROM country JOIN city ON country.Code=city.CountryCode WHERE Code='ESP' LIMIT 1; 
+Madrid
+
+5. SELECT country.Code, country.Region, countrylanguage.CountryCode, countrylanguage.Language FROM country JOIN countrylanguage ON country.Code=countrylanguage.CountryCode WHERE Region='
+Southeast Asia';
++------+----------------+-------------+---------------+
+| Code | Region         | CountryCode | Language      |
++------+----------------+-------------+---------------+
+| BRN  | Southeast Asia | BRN         | Chinese       |
+| BRN  | Southeast Asia | BRN         | English       |
+| BRN  | Southeast Asia | BRN         | Malay         |
+| BRN  | Southeast Asia | BRN         | Malay-English |
+| IDN  | Southeast Asia | IDN         | Bali          |
+| IDN  | Southeast Asia | IDN         | Banja         |
+| IDN  | Southeast Asia | IDN         | Batakki       |
+| IDN  | Southeast Asia | IDN         | Bugi          |
+| IDN  | Southeast Asia | IDN         | Javanese      |
+| IDN  | Southeast Asia | IDN         | Madura        |
+| IDN  | Southeast Asia | IDN         | Malay         |
+| IDN  | Southeast Asia | IDN         | Minangkabau   |
+| IDN  | Southeast Asia | IDN         | Sunda         |
+| KHM  | Southeast Asia | KHM         | Chinese       |
+| KHM  | Southeast Asia | KHM         | Khmer         |
+| KHM  | Southeast Asia | KHM         | Tšam          |
+| KHM  | Southeast Asia | KHM         | Vietnamese    |
+| LAO  | Southeast Asia | LAO         | Lao           |
+| LAO  | Southeast Asia | LAO         | Lao-Soung     |
+| LAO  | Southeast Asia | LAO         | Mon-khmer     |
+| LAO  | Southeast Asia | LAO         | Thai          |
+| MMR  | Southeast Asia | MMR         | Burmese       |
+| MMR  | Southeast Asia | MMR         | Chin          |
+| MMR  | Southeast Asia | MMR         | Kachin        |
+| MMR  | Southeast Asia | MMR         | Karen         |
+| MMR  | Southeast Asia | MMR         | Kayah         |
+| MMR  | Southeast Asia | MMR         | Mon           |
+| MMR  | Southeast Asia | MMR         | Rakhine       |
+| MMR  | Southeast Asia | MMR         | Shan          |
+| MYS  | Southeast Asia | MYS         | Chinese       |
+| MYS  | Southeast Asia | MYS         | Dusun         |
+| MYS  | Southeast Asia | MYS         | English       |
+| MYS  | Southeast Asia | MYS         | Iban          |
+| MYS  | Southeast Asia | MYS         | Malay         |
+| MYS  | Southeast Asia | MYS         | Tamil         |
+| PHL  | Southeast Asia | PHL         | Bicol         |
+| PHL  | Southeast Asia | PHL         | Cebuano       |
+| PHL  | Southeast Asia | PHL         | Hiligaynon    |
+| PHL  | Southeast Asia | PHL         | Ilocano       |
+| PHL  | Southeast Asia | PHL         | Maguindanao   |
+| PHL  | Southeast Asia | PHL         | Maranao       |
+| PHL  | Southeast Asia | PHL         | Pampango      |
+| PHL  | Southeast Asia | PHL         | Pangasinan    |
+| PHL  | Southeast Asia | PHL         | Pilipino      |
+| PHL  | Southeast Asia | PHL         | Waray-waray   |
+| SGP  | Southeast Asia | SGP         | Chinese       |
+| SGP  | Southeast Asia | SGP         | Malay         |
+| SGP  | Southeast Asia | SGP         | Tamil         |
+| THA  | Southeast Asia | THA         | Chinese       |
+| THA  | Southeast Asia | THA         | Khmer         |
+| THA  | Southeast Asia | THA         | Kuy           |
+| THA  | Southeast Asia | THA         | Lao           |
+| THA  | Southeast Asia | THA         | Malay         |
+| THA  | Southeast Asia | THA         | Thai          |
+| TMP  | Southeast Asia | TMP         | Portuguese    |
+| TMP  | Southeast Asia | TMP         | Sunda         |
+| VNM  | Southeast Asia | VNM         | Chinese       |
+| VNM  | Southeast Asia | VNM         | Khmer         |
+| VNM  | Southeast Asia | VNM         | Man           |
+| VNM  | Southeast Asia | VNM         | Miao          |
+| VNM  | Southeast Asia | VNM         | Muong         |
+| VNM  | Southeast Asia | VNM         | Nung          |
+| VNM  | Southeast Asia | VNM         | Thai          |
+| VNM  | Southeast Asia | VNM         | Tho           |
+
+6. SELECT Name From city WHERE Name LIKE 'F%' LIMIT 25;
++---------------------------+
+| Name                      |
++---------------------------+
+| Fagatogo                  |
+| Florencio Varela          |
+| Formosa                   |
+| Francistown               |
+| Fortaleza                 |
+| Feira de Santana          |
+| Franca                    |
+| Florianópolis             |
+| Foz do Iguaçu             |
+| Ferraz de Vasconcelos     |
+| Francisco Morato          |
+| Franco da Rocha           |
+| Fuenlabrada               |
+| Faridabad                 |
+| Firozabad                 |
+| Farrukhabad-cum-Fatehgarh |
+| Faizabad                  |
+| Fatehpur                  |
+| Firenze                   |
+| Foggia                    |
+| Ferrara                   |
+| Forlì                     |
+| Fukuoka                   |
+| Funabashi                 |
+| Fukuyama                  |
++---------------------------+
+
+7. SELECT COUNT(city.Name) FROM city JOIN country ON city.CountryCode=country.Code WHERE country.CODE = 'CHN';
+363
+
+8. SELECT Name, Population FROM country WHERE Population IS NOT NULL ORDER BY Population ASC LIMIT 1;
+Antarctica 0
+
+9.SELECT COUNT(Name) FROM country;
+239
+
+10. SELECT Name, SurfaceArea FROM country ORDER BY SurfaceArea DESC LIMIT 10;
++--------------------+-------------+
+| Name               | SurfaceArea |
++--------------------+-------------+
+| Russian Federation | 17075400.00 |
+| Antarctica         | 13120000.00 |
+| Canada             |  9970610.00 |
+| China              |  9572900.00 |
+| United States      |  9363520.00 |
+| Brazil             |  8547403.00 |
+| Australia          |  7741220.00 |
+| India              |  3287263.00 |
+| Argentina          |  2780400.00 |
+| Kazakstan          |  2724900.00 |
++--------------------+-------------+
+
+11. SELECT Name, CountryCode, Population FROM city WHERE CountryCode = 'JPN' ORDER BY Population DESC LIMIT 5;
++---------------------+-------------+------------+
+| Name                | CountryCode | Population |
++---------------------+-------------+------------+
+| Tokyo               | JPN         |    7980230 |
+| Jokohama [Yokohama] | JPN         |    3339594 |
+| Osaka               | JPN         |    2595674 |
+| Nagoya              | JPN         |    2154376 |
+| Sapporo             | JPN         |    1790886 |
++---------------------+-------------+------------+
+
+12. SELECT Code, Name, HeadOfState FROM country WHERE HeadOfState = 'Elizabeth II';
++------+----------------------------------------------+--------------+
+| Code | Name                                         | HeadOfState  |
++------+----------------------------------------------+--------------+
+| AIA  | Anguilla                                     | Elizabeth II |
+| ATG  | Antigua and Barbuda                          | Elizabeth II |
+| AUS  | Australia                                    | Elizabeth II |
+| BHS  | Bahamas                                      | Elizabeth II |
+| BLZ  | Belize                                       | Elizabeth II |
+| BMU  | Bermuda                                      | Elizabeth II |
+| BRB  | Barbados                                     | Elizabeth II |
+| CAN  | Canada                                       | Elizabeth II |
+| CCK  | Cocos (Keeling) Islands                      | Elizabeth II |
+| COK  | Cook Islands                                 | Elizabeth II |
+| CXR  | Christmas Island                             | Elizabeth II |
+| CYM  | Cayman Islands                               | Elizabeth II |
+| FLK  | Falkland Islands                             | Elizabeth II |
+| GBR  | United Kingdom                               | Elizabeth II |
+| GIB  | Gibraltar                                    | Elizabeth II |
+| GRD  | Grenada                                      | Elizabeth II |
+| HMD  | Heard Island and McDonald Islands            | Elizabeth II |
+| IOT  | British Indian Ocean Territory               | Elizabeth II |
+| JAM  | Jamaica                                      | Elizabeth II |
+| KNA  | Saint Kitts and Nevis                        | Elizabeth II |
+| LCA  | Saint Lucia                                  | Elizabeth II |
+| MSR  | Montserrat                                   | Elizabeth II |
+| NFK  | Norfolk Island                               | Elizabeth II |
+| NIU  | Niue                                         | Elizabeth II |
+| NZL  | New Zealand                                  | Elizabeth II |
+| PCN  | Pitcairn                                     | Elizabeth II |
+| PNG  | Papua New Guinea                             | Elizabeth II |
+| SGS  | South Georgia and the South Sandwich Islands | Elizabeth II |
+| SHN  | Saint Helena                                 | Elizabeth II |
+| SLB  | Solomon Islands                              | Elizabeth II |
+| TCA  | Turks and Caicos Islands                     | Elizabeth II |
+| TKL  | Tokelau                                      | Elizabeth II |
+| TUV  | Tuvalu                                       | Elizabeth II |
+| VCT  | Saint Vincent and the Grenadines             | Elizabeth II |
+| VGB  | Virgin Islands, British                      | Elizabeth II |
++------+----------------------------------------------+--------------+
+
+13. SELECT Name, (Population/SurfaceArea) AS PopulationToAreaRatio FROM country WHERE (Population/SurfaceArea) != 0 ORDER BY (Population/SurfaceArea) ASC LIMIT 10;
++------------------------+-----------------------+
+| Name                   | PopulationToAreaRatio |
++------------------------+-----------------------+
+| Greenland              |              0.025853 |
+| Svalbard and Jan Mayen |              0.051264 |
+| Falkland Islands       |              0.164298 |
+| Pitcairn               |              1.020408 |
+| Western Sahara         |              1.101504 |
+| Mongolia               |              1.699330 |
+| French Guiana          |              2.011111 |
+| Namibia                |              2.093918 |
+| Australia              |              2.439667 |
+| Suriname               |              2.554130 |
++------------------------+-----------------------+
+
+14. SELECT DISTINCT Language FROM countrylanguage;
++---------------------------+
+| Language                  |
++---------------------------+
+| Dutch                     |
+| English                   |
+| Papiamento                |
+| Spanish                   |
+| Balochi                   |
+| Dari                      |
+| Pashto                    |
+| Turkmenian                |
+| Uzbek                     |
+| Ambo                      |
+| Chokwe                    |
+| Kongo                     |
+| Luchazi                   |
+| Luimbe-nganguela          |
+| Luvale                    |
+| Mbundu                    |
+| Nyaneka-nkhumbi           |
+| Ovimbundu                 |
+| Albaniana                 |
+| Greek                     |
+| Macedonian                |
+| Catalan                   |
+| French                    |
+| Portuguese                |
+| Arabic                    |
+| Hindi                     |
+| Indian Languages          |
+| Italian                   |
+| Armenian                  |
+| Azerbaijani               |
+| Samoan                    |
+| Tongan                    |
+| Creole English            |
+| Canton Chinese            |
+| German                    |
+| Serbo-Croatian            |
+| Vietnamese                |
+| Czech                     |
+| Hungarian                 |
+| Polish                    |
+| Romanian                  |
+| Slovene                   |
+| Turkish                   |
+| Lezgian                   |
+| Russian                   |
+| Kirundi                   |
+| Swahili                   |
+| Adja                      |
+| Aizo                      |
+| Bariba                    |
+| Fon                       |
+| Ful                       |
+| Joruba                    |
+| Somba                     |
+| Busansi                   |
+| Dagara                    |
+| Dyula                     |
+| Gurma                     |
+| Mossi                     |
+| Bengali                   |
+| Chakma                    |
+| Garo                      |
+| Khasi                     |
+| Marma                     |
+| Santhali                  |
+| Tripuri                   |
+| Bulgariana                |
+| Romani                    |
+| Creole French             |
+| Belorussian               |
+| Ukrainian                 |
+| Garifuna                  |
+| Maya Languages            |
+| Aimará                    |
+| Guaraní                   |
+| Ketšua                    |
+| Japanese                  |
+| Bajan                     |
+| Chinese                   |
+| Malay                     |
+| Malay-English             |
+| Asami                     |
+| Dzongkha                  |
+| Nepali                    |
+| Khoekhoe                  |
+| Ndebele                   |
+| San                       |
+| Shona                     |
+| Tswana                    |
+| Banda                     |
+| Gbaya                     |
+| Mandjia                   |
+| Mbum                      |
+| Ngbaka                    |
+| Sara                      |
+| Eskimo Languages          |
+| Punjabi                   |
+| Romansh                   |
+| Araucan                   |
+| Rapa nui                  |
+| Dong                      |
+| Hui                       |
+| Mantšu                    |
+| Miao                      |
+| Mongolian                 |
+| Puyi                      |
+| Tibetan                   |
+| Tujia                     |
+| Uighur                    |
+| Yi                        |
+| Zhuang                    |
+| Akan                      |
+| Gur                       |
+| Kru                       |
+| Malinke                   |
+| [South]Mande              |
+| Bamileke-bamum            |
+| Duala                     |
+| Fang                      |
+| Maka                      |
+| Mandara                   |
+| Masana                    |
+| Tikar                     |
+| Boa                       |
+| Luba                      |
+| Mongo                     |
+| Ngala and Bangi           |
+| Rundi                     |
+| Rwanda                    |
+| Teke                      |
+| Zande                     |
+| Mbete                     |
+| Mboshi                    |
+| Punu                      |
+| Sango                     |
+| Maori                     |
+| Arawakan                  |
+| Caribbean                 |
+| Chibcha                   |
+| Comorian                  |
+| Comorian-Arabic           |
+| Comorian-French           |
+| Comorian-madagassi        |
+| Comorian-Swahili          |
+| Crioulo                   |
+| Moravian                  |
+| Silesiana                 |
+| Slovak                    |
+| Southern Slavic Languages |
+| Afar                      |
+| Somali                    |
+| Danish                    |
+| Norwegian                 |
+| Swedish                   |
+| Berberi                   |
+| Sinaberberi               |
+| Bilin                     |
+| Hadareb                   |
+| Saho                      |
+| Tigre                     |
+| Tigrinja                  |
+| Basque                    |
+| Galecian                  |
+| Estonian                  |
+| Finnish                   |
+| Amhara                    |
+| Gurage                    |
+| Oromo                     |
+| Sidamo                    |
+| Walaita                   |
+| Saame                     |
+| Fijian                    |
+| Faroese                   |
+| Kosrean                   |
+| Mortlock                  |
+| Pohnpei                   |
+| Trukese                   |
+| Wolea                     |
+| Yap                       |
+| Mpongwe                   |
+| Punu-sira-nzebi           |
+| Gaeli                     |
+| Kymri                     |
+| Abhyasi                   |
+| Georgiana                 |
+| Osseetti                  |
+| Ewe                       |
+| Ga-adangme                |
+| Kissi                     |
+| Kpelle                    |
+| Loma                      |
+| Susu                      |
+| Yalunka                   |
+| Diola                     |
+| Soninke                   |
+| Wolof                     |
+| Balante                   |
+| Mandyako                  |
+| Bubi                      |
+| Greenlandic               |
+| Cakchiquel                |
+| Kekchí                    |
+| Mam                       |
+| Quiché                    |
+| Chamorro                  |
+| Korean                    |
+| Philippene Languages      |
+| Chiu chau                 |
+| Fukien                    |
+| Hakka                     |
+| Miskito                   |
+| Haiti Creole              |
+| Bali                      |
+| Banja                     |
+| Batakki                   |
+| Bugi                      |
+| Javanese                  |
+| Madura                    |
+| Minangkabau               |
+| Sunda                     |
+| Gujarati                  |
+| Kannada                   |
+| Malajalam                 |
+| Marathi                   |
+| Orija                     |
+| Tamil                     |
+| Telugu                    |
+| Urdu                      |
+| Irish                     |
+| Bakhtyari                 |
+| Gilaki                    |
+| Kurdish                   |
+| Luri                      |
+| Mazandarani               |
+| Persian                   |
+| Assyrian                  |
+| Icelandic                 |
+| Hebrew                    |
+| Friuli                    |
+| Sardinian                 |
+| Circassian                |
+| Ainu                      |
+| Kazakh                    |
+| Tatar                     |
+| Gusii                     |
+| Kalenjin                  |
+| Kamba                     |
+| Kikuyu                    |
+| Luhya                     |
+| Luo                       |
+| Masai                     |
+| Meru                      |
+| Nyika                     |
+| Turkana                   |
+| Kirgiz                    |
+| Tadzhik                   |
+| Khmer                     |
+| Tšam                      |
+| Kiribati                  |
+| Tuvalu                    |
+| Lao                       |
+| Lao-Soung                 |
+| Mon-khmer                 |
+| Thai                      |
+| Bassa                     |
+| Gio                       |
+| Grebo                     |
+| Mano                      |
+| Mixed Languages           |
+| Singali                   |
+| Sotho                     |
+| Zulu                      |
+| Lithuanian                |
+| Luxembourgish             |
+| Latvian                   |
+| Mandarin Chinese          |
+| Monegasque                |
+| Gagauzi                   |
+| Malagasy                  |
+| Dhivehi                   |
+| Mixtec                    |
+| Náhuatl                   |
+| Otomí                     |
+| Yucatec                   |
+| Zapotec                   |
+| Marshallese               |
+| Bambara                   |
+| Senufo and Minianka       |
+| Songhai                   |
+| Tamashek                  |
+| Maltese                   |
+| Burmese                   |
+| Chin                      |
+| Kachin                    |
+| Karen                     |
+| Kayah                     |
+| Mon                       |
+| Rakhine                   |
+| Shan                      |
+| Bajad                     |
+| Buryat                    |
+| Dariganga                 |
+| Dorbet                    |
+| Carolinian                |
+| Chuabo                    |
+| Lomwe                     |
+| Makua                     |
+| Marendje                  |
+| Nyanja                    |
+| Ronga                     |
+| Sena                      |
+| Tsonga                    |
+| Tswa                      |
+| Hassaniya                 |
+| Tukulor                   |
+| Zenaga                    |
+| Bhojpuri                  |
+| Chichewa                  |
+| Ngoni                     |
+| Yao                       |
+| Dusun                     |
+| Iban                      |
+| Mahoré                    |
+| Afrikaans                 |
+| Caprivi                   |
+| Herero                    |
+| Kavango                   |
+| Nama                      |
+| Ovambo                    |
+| Malenasian Languages      |
+| Polynesian Languages      |
+| Hausa                     |
+| Kanuri                    |
+| Songhai-zerma             |
+| Bura                      |
+| Edo                       |
+| Ibibio                    |
+| Ibo                       |
+| Ijo                       |
+| Tiv                       |
+| Sumo                      |
+| Niue                      |
+| Fries                     |
+| Maithili                  |
+| Newari                    |
+| Tamang                    |
+| Tharu                     |
+| Nauru                     |
+| Brahui                    |
+| Hindko                    |
+| Saraiki                   |
+| Sindhi                    |
+| Cuna                      |
+| Embera                    |
+| Guaymí                    |
+| Pitcairnese               |
+| Bicol                     |
+| Cebuano                   |
+| Hiligaynon                |
+| Ilocano                   |
+| Maguindanao               |
+| Maranao                   |
+| Pampango                  |
+| Pangasinan                |
+| Pilipino                  |
+| Waray-waray               |
+| Palau                     |
+| Papuan Languages          |
+| Tahitian                  |
+| Avarian                   |
+| Bashkir                   |
+| Chechen                   |
+| Chuvash                   |
+| Mari                      |
+| Mordva                    |
+| Udmur                     |
+| Bari                      |
+| Beja                      |
+| Chilluk                   |
+| Dinka                     |
+| Fur                       |
+| Lotuko                    |
+| Nubian Languages          |
+| Nuer                      |
+| Serer                     |
+| Bullom-sherbro            |
+| Kono-vai                  |
+| Kuranko                   |
+| Limba                     |
+| Mende                     |
+| Temne                     |
+| Nahua                     |
+| Sranantonga               |
+| Czech and Moravian        |
+| Ukrainian and Russian     |
+| Swazi                     |
+| Seselwa                   |
+| Gorane                    |
+| Hadjarai                  |
+| Kanem-bornu               |
+| Mayo-kebbi                |
+| Ouaddai                   |
+| Tandjile                  |
+| Ane                       |
+| Kabyé                     |
+| Kotokoli                  |
+| Moba                      |
+| Naudemba                  |
+| Watyi                     |
+| Kuy                       |
+| Tokelau                   |
+| Arabic-French             |
+| Arabic-French-English     |
+| Ami                       |
+| Atayal                    |
+| Min                       |
+| Paiwan                    |
+| Chaga and Pare            |
+| Gogo                      |
+| Ha                        |
+| Haya                      |
+| Hehet                     |
+| Luguru                    |
+| Makonde                   |
+| Nyakusa                   |
+| Nyamwesi                  |
+| Shambala                  |
+| Acholi                    |
+| Ganda                     |
+| Gisu                      |
+| Kiga                      |
+| Lango                     |
+| Lugbara                   |
+| Nkole                     |
+| Soga                      |
+| Teso                      |
+| Tagalog                   |
+| Karakalpak                |
+| Goajiro                   |
+| Warrau                    |
+| Man                       |
+| Muong                     |
+| Nung                      |
+| Tho                       |
+| Bislama                   |
+| Futuna                    |
+| Wallis                    |
+| Samoan-English            |
+| Soqutri                   |
+| Northsotho                |
+| Southsotho                |
+| Venda                     |
+| Xhosa                     |
+| Bemba                     |
+| Chewa                     |
+| Lozi                      |
+| Nsenga                    |
++---------------------------+
+
+15. SELECT Name, GNP FROM country ORDER BY GNP DESC Limit 10;
++----------------+------------+
+| Name           | GNP        |
++----------------+------------+
+| United States  | 8510700.00 |
+| Japan          | 3787042.00 |
+| Germany        | 2133367.00 |
+| France         | 1424285.00 |
+| United Kingdom | 1378330.00 |
+| Italy          | 1161755.00 |
+| China          |  982268.00 |
+| Brazil         |  776739.00 |
+| Canada         |  598862.00 |
+| Spain          |  553233.00 |
++----------------+------------+
+
+16. SELECT CountryCode, COUNT(Language) AS Multi FROM countrylanguage GROUP BY CountryCode ORDER BY Multi DESC LIMIT 10;
++-------------+-------+
+| CountryCode | Multi |
++-------------+-------+
+| IND         |    12 |
+| RUS         |    12 |
+| CAN         |    12 |
+| CHN         |    12 |
+| USA         |    12 |
+| TZA         |    11 |
+| ZAF         |    11 |
+| IRN         |    10 |
+| PHL         |    10 |
+| SDN         |    10 |
++-------------+-------+
+
+17. SELECT CountryCode, Language, Percentage FROM countrylanguage WHERE Language = 'German' AND Percentage > 50.0;
++-------------+----------+------------+
+| CountryCode | Language | Percentage |
++-------------+----------+------------+
+| AUT         | German   |       92.0 |
+| CHE         | German   |       63.6 |
+| DEU         | German   |       91.3 |
+| LIE         | German   |       89.0 |
++-------------+----------+------------+
+
+18. SELECT Name, LifeExpectancy FROM country WHERE LifeExpectancy != 0 AND LifeExpectancy
+IS NOT NULL ORDER BY LifeExpectancy ASC LIMIT 1;
+Zambia - 37.2
+
 19.
 20.
